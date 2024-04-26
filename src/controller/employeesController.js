@@ -7,6 +7,6 @@ const userDB = {
 
 
 const readController = (req,res)=>{
-    res.json(data.users);
+    res.json(userDB.users);
 }
 module.exports = {readController}
