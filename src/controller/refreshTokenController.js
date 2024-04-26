@@ -19,7 +19,7 @@ const handleRefreshToken = (req, res) => {
   //evaluate password
   jwt.verify(refreshtoken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
     if (err || foundUser.username !== decoded.username)
-      return res.sendStatus(403);
+      return res.status(403).send("failed evaluated password on refresh token");
     const roles = Object.values(foundUser.roles);
 
     const accessToken = jwt.sign(
