@@ -11,7 +11,8 @@ const verifyJWT = (req,res,next)=>{
         token,
         process.env.ACCESS_TOKEN_SECRET,
         (err,decoded)=>{
-            if(err)return res.status(403).send('invalid token ') // invalid token
+
+            if(err)return res.status(403).send('invalid token verifing  with '+ token) // invalid token
             
             res.user = decoded.userInfo.username;
             req.roles = decoded.userInfo.roles

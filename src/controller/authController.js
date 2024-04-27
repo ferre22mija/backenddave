@@ -36,7 +36,7 @@ const handleLogin = async (req, res) => {
     const refreshtoken = jwt.sign(
       { username: foundUser.username },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "120s" }
     );
     //saving refreshtoken with currentuser
     const otherUsers = userDB.users.filter(
@@ -57,6 +57,7 @@ const handleLogin = async (req, res) => {
     res.json({
       successs: `user ${user} iis logged in!`,
       accessToken: accessToken,
+      refreshtoken:refreshtoken,
       roles:roles
     });
   } else {
