@@ -27,7 +27,7 @@ const userDB = {
     userDB.setUsers([...otherUsers,currentUser]);
 
     await fsPromises.writeFile(
-        path.join(__dirname,"..","model","users.json"),
+        path.join(__dirname,"..","models","users.json"),
         JSON.stringify(userDB.users)
     )
     res.clearCookie('jwt', {httpOnly:true,sameSite:'None',secure:true}); //secure: true - only servers on https
